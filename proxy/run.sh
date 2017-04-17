@@ -17,7 +17,7 @@ sub_template(){
     rename_template $file_to_sub
 
     echo "subsituting $file_to_sub and copying to new file $renamed_filename"
-    envsubst < $file_to_sub > $renamed_filename
+    envsubst  '${HOST_NAME}' < $file_to_sub > $renamed_filename
     cat $renamed_filename
 }
 

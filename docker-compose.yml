@@ -8,3 +8,17 @@ services:
       - "443:443"
     environment:
       HOST_NAME: localhost
+    links:
+      - db
+  db:
+    image: klaemo/couchdb:2.0.0
+    volumes:
+      - couchdata:/opt/couchdb/data
+  data:
+    image: alpine:3.5
+    volumes:
+      - couchdata:/opt/couchdb/data
+    command: "/bin/true"
+
+volumes:
+  couchdata:
